@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VCR+OSD+Mono&display=swap');
 
 * {
     margin: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'VCR OSD Mono', monospace;
     background: linear-gradient(to right, #9ae38b, #4e75d0, #e16161); /* Gradiente verde claro, azul y rojo */
     height: 100vh;
     overflow: hidden; /* Evita el scroll */
