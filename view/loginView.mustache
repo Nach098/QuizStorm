@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/public/login.css">
+</head>
+<body>
+<div class="container">
+    <h2>Iniciar Sesión</h2>
+    <form method="POST" action="/login/signIn">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="contraseña" required>
+        <button type="submit">Aceptar</button>
+        <button onclick="window.history.back();">Volver</button> <!-- Botón de "Atrás" -->
+    </form>
+</div>
+</body>
+</html>
