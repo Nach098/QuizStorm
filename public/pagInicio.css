@@ -8,8 +8,9 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #4e75d0 50%, #e16161 50%);
+    background: linear-gradient(to right, #9ae38b, #4e75d0, #e16161); /* Gradiente verde claro, azul y rojo */
     height: 100vh;
+    overflow: hidden; /* Evita el scroll */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,19 +19,21 @@ body {
 
 .container {
     text-align: center;
+    position: relative;
     image-rendering: pixelated;
 }
 
 .header {
     position: absolute;
-    top: 60px; /* Ajusta esta distancia desde la parte superior */
-    left: 51%; /* Centra horizontalmente */
-    transform: translateX(-50%); /* Centrado horizontal */
+    top: 120px; /* Logo más abajo */
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
+    z-index: 10; /* Asegura que el título esté al frente */
 }
 
 .header h1 {
-    font-size: 5em;
+    font-size: 4em;
     font-weight: bold;
     color: black;
     font-family: "Press Start 2P", sans-serif;
@@ -38,62 +41,63 @@ body {
     margin: 0;
 }
 
-
-
 .cloud img {
-    width: 800px;
+    width: 1100px; /* Nube más ancha */
     image-rendering: pixelated;
+    position: relative;
+    top: -120px; /* Mantiene la nube alta, fuera de la pantalla */
+    z-index: 5; /* Nube detrás del título y botones */
 }
 
 .icons {
+    position: relative;
     display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-    gap: 10px;
+    justify-content: space-around;
     flex-wrap: wrap;
-    justify-content: space-between;
-    image-rendering: pixelated;
+    gap: 20px;
+    margin-top: 40px;
 }
 
 .icons img {
-    width: 80px;
-    margin-bottom: 10px;
+    width: 60px;
+    position: absolute;
+    animation: fall calc(2.5s + var(--i) * 0.3s) linear infinite; /* Velocidad de caída ligeramente más lenta */
 }
 
-.teatro {
-    transform: translate(100%, -90%);
-}
-
-.juego {
-    transform: translate(50%, 40%);
-}
-
-.comida {
-    transform: translate(50%, -100%);
-}
-
-.deporte {
-    transform: translate(0%, 140%);
-}
-
-.ciencia {
-    transform: translate(-50%, -120%);
-}
-
-.cine {
-    transform: translate(-45%, 80%);
-}
-
-.libro {
-    transform: translate(-100%, -90%);
-}
+/* Elementos con variaciones más aleatorias */
+.teatro { --i: 1; top: -60px; left: 10%; }
+.juego { --i: 2; top: -80px; left: 20%; }
+.comida { --i: 3; top: -100px; left: 30%; }
+.deporte { --i: 4; top: -90px; left: 40%; }
+.ciencia { --i: 5; top: -120px; left: 50%; }
+.cine { --i: 6; top: -110px; left: 60%; }
+.libro { --i: 7; top: -80px; left: 70%; }
+/* Duplicados de elementos para más caídas */
+.teatro2 { --i: 8; top: -70px; left: 75%; }
+.juego2 { --i: 9; top: -60px; left: 85%; }
+.comida2 { --i: 10; top: -90px; left: 95%; }
+.deporte2 { --i: 11; top: -100px; left: 10%; }
+.ciencia2 { --i: 12; top: -110px; left: 20%; }
+.cine2 { --i: 13; top: -120px; left: 30%; }
+.libro2 { --i: 14; top: -85px; left: 40%; }
+/* Nuevos elementos con posiciones más aleatorias */
+.teatro3 { --i: 15; top: -110px; left: 80%; }
+.juego3 { --i: 16; top: -60px; left: 50%; }
+.comida3 { --i: 17; top: -100px; left: 25%; }
+.deporte3 { --i: 18; top: -90px; left: 45%; }
+.ciencia3 { --i: 19; top: -120px; left: 65%; }
+.cine3 { --i: 20; top: -110px; left: 55%; }
+.libro3 { --i: 21; top: -85px; left: 75%; }
 
 .buttons {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     position: absolute;
-    transform: translate(85%, -80%);
+    left: 50%;
+    top: 50%; /* Más abajo para estar centrado en la nube */
+    transform: translateX(-50%);
+    z-index: 10; /* Botones al frente */
     image-rendering: pixelated;
 }
 
@@ -101,16 +105,67 @@ button {
     background-color: #8c8c8c;
     color: white;
     border: 3px solid black;
-    padding: 10px 30px;
-    font-size: 1.2em;
+    padding: 8px 20px;
+    font-size: 1em;
     font-family: "Press Start 2P", sans-serif;
-    width: 300px;
-    height: 75px;
+    width: 250px;
+    height: 60px;
     cursor: pointer;
     image-rendering: pixelated;
-    box-shadow: 3px 3px 0 black; /* Sombra de 8 bits */
+    box-shadow: 3px 3px 0 black;
 }
 
 button:hover {
     background-color: #6d6d6d;
+}
+
+/* Animación de caída con rotación y posiciones aleatorias */
+@keyframes fall {
+    0% { 
+        transform: translateY(-200px) rotate(calc(var(--angle) * 1deg)); 
+        opacity: 0.8; 
+    }
+    100% { 
+        transform: translateY(300px) rotate(calc(var(--angle) * 2deg)); /* Mantiene el movimiento sin scroll */
+        opacity: 1; 
+    }
+}
+
+.icons img:nth-child(odd) {
+    --angle: calc(10 + (var(--i) * 5)); /* Ángulos rotatorios aleatorios */
+}
+
+.icons img:nth-child(even) {
+    --angle: calc(-10 - (var(--i) * 5)); /* Rotación opuesta */
+}
+
+/* MEDIA QUERY: Pantallas pequeñas (móviles) */
+@media (max-width: 767px) {
+    /* Mantener todos los botones visibles */
+    .buttons {
+        display: flex;
+    }
+
+    /* Ajustar el tamaño y la visibilidad de la nube y el logo */
+    .header {
+        top: 150px; /* Baja el logo ligeramente más */
+    }
+
+    .cloud img {
+        width: 700px; /* Nube más pequeña */
+        top: -60px; /* Nube sube un poco más */
+    }
+
+    .icons img {
+        width: 50px; /* Reduce el tamaño de los objetos */
+    }
+
+    /* Ajustar el tamaño del logo de QuizStorm en pantallas pequeñas */
+    .header h1 {
+        font-size: 2.5em; /* Ajusta el tamaño del texto */
+    }
+
+    body {
+        background: linear-gradient(to right, #9ae38b, #4e75d0, #e16161); /* Mantiene el gradiente */
+    }
 }
