@@ -22,8 +22,8 @@ class LoginController
             session_start();
             $_SESSION['id_usuario'] = $result[0]['id_usuario'];
             $_SESSION['id_partida'] = null;
-            header("location:/TP-Final-QuizStorm/lobby");
-        } else header("location:/TP-Final-QuizStorm/register"); //tendria que ir a registrarse
+            header("location:/lobby");
+        } else header("location:/register"); //tendria que ir a registrarse
         exit();
     }
 
@@ -59,7 +59,7 @@ class LoginController
     {
         $data = [
             'formTitle' => 'Iniciar sesión',
-            'formAction' => '/TP-Final-QuizStorm/login/signIn',
+            'formAction' => '/login/signIn',
             'submitButtonText' => 'Ingresar',
             "mensaje" => $_SESSION["success"] ?? null,
             "error" => $_SESSION["error"] ?? null,
